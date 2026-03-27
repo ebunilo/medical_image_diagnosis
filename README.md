@@ -115,8 +115,9 @@ flowchart TB
 Simple FastAPI UI is included with:
 
 - image upload and diagnosis trigger
-- results panel for diagnostic output
-- medical-expert Q&A panel grounded in the latest diagnosis bundle
+- human-readable diagnosis summary (sections for plain language, care-team summary, next steps, and image findings)
+- collapsible **Technical details (JSON)** for the full API-shaped payload
+- medical-expert Q&A with a readable answer plus optional JSON details
 
 ## How to run the application
 
