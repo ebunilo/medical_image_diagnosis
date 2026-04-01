@@ -8,7 +8,7 @@ from typing import Any
 from uuid import uuid4
 
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, Response
 from pydantic import BaseModel, Field
 
 from medical_diagnosis.observability.langfuse_client import submit_clinician_feedback
@@ -25,6 +25,12 @@ _ui_path = Path(__file__).resolve().parent / "ui" / "index.html"
 @app.get("/")
 async def index() -> FileResponse:
     return FileResponse(_ui_path)
+
+
+@app.get("/favicon.ico", include_in_schema=False)
+async def favicon() -> Response:
+    """Avoid 404 noise; browsers request this on every tab load."""
+    return Response(status_code=204)
 
 
 @app.post("/api/diagnose")
